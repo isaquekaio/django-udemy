@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transações</title>
+    <style>
+        table, th, td {
+          border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>Listagem</h2>
+    <table>
+        <tr>
+            <th>Ações</th>
+            <th>Descrição</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Categoria</th>
+        </tr>
+        {% for transacao in transacoes %}
+            <tr>
+                <th>
+                    <a href="{% url 'update' transacao.id %}">Atualizar</a>
+                    <a href="{% url 'delete' transacao.id %}">Apagar</a>
+                </th>
+                <th>{{ transacao.descricao }}</th>
+                <th>{{ transacao.data }}</th>
+                <th>{{ transacao.valor }}</th>
+                <th>{{ transacao.categoria }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'nova' %}">Nova</a>
+</body>
+</html>
